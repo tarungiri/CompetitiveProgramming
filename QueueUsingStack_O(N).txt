@@ -1,0 +1,65 @@
+//<--- Approach --->
+//Take two stack(here we use array which implements stack itself) first and last
+
+//Enqueue ->
+    //1. pop all items from first stack and insert into last one by one
+    //2. Now push new item to be inserted into fisrt stack
+    //3. pop all items from last stack and insert into fisrt stack one by one
+
+//Dequeue ->
+    //1. just pop from first stack.
+
+//Peek ->
+    //1. Return last item from array or stack
+
+
+// Time complexity ->  O(n)
+// Space Complexity -> O(2n)=> O(n)
+
+class MyQueue {
+    constructor(){
+        this.first = [];
+        this.last = [];
+    }
+
+    enqueue(value){
+        if(this.first.length !== 0){
+            const length = this.first.length;
+            for(let i=0; i<length; i++){
+                this.last.push(this.first.pop())
+            }
+        }
+        this.first.push(value);
+        if(this.last.length !== 0){
+            const length = this.last.length;
+            for(let i=0; i<length; i++){
+                this.first.push(this.last.pop())
+            }
+        }
+        return this;
+    }
+
+    dequeue(){
+        this.first.pop();
+        return this;
+    }
+
+    peek(){
+        const length = this.first.length;
+        if(length){
+            return this.first[length - 1];
+        }
+        return null;
+    }
+}
+
+const myQ = new MyQueue();
+myQ.enqueue(10);
+myQ.enqueue(20);
+myQ.enqueue(30);
+myQ.dequeue();
+myQ.dequeue();
+myQ.enqueue(36);
+myQ.dequeue();
+myQ.dequeue();
+myQ.peek();

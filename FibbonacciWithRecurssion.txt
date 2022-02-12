@@ -1,0 +1,20 @@
+// 0 1 1 2 3 5 8 13 ... Fibbonacci Series
+
+// 3 => 1 + 1
+// 4 => fib(4-1) + fib(4-2)
+
+// Return index value of series
+
+// O(2^n) exponetial time complexity
+
+function fibbonacciNumberAt(index){
+    if(index === 0){
+        return 0;
+    } else if(index <= 2){
+        return 1;
+    }
+
+    return fibbonacciNumberAt(index - 2) + fibbonacciNumberAt(index -1);
+}
+
+fibbonacciNumberAt(8);

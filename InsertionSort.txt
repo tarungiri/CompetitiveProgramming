@@ -1,0 +1,33 @@
+// Insertion Sort
+
+// is best when data set is small and almost sorted
+// sort is worst when data set is in reverse order
+
+//Space complexity -> O(1)
+
+//          Time Complexity ->  Best | Average | Worst
+//                              O(n)   O(n^2)   O(n^2)
+
+let numbers = [4,1,6,8,2,3,4,5];
+
+function insertionSort(array){
+    const len = array.length;
+    let j, currentElement;
+    for(let i = 1; i < len; i++){
+        j = i-1;
+        currentElement = array[i];
+        while(array[j] > currentElement && j >= 0){
+            array[j+1] = array[j];
+            j--;
+        }
+
+        array[j+1] = currentElement;
+    }
+}
+
+
+insertionSort(numbers);
+
+console.log(numbers);
+
+    

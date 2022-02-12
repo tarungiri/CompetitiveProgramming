@@ -1,0 +1,10 @@
+
+
+function sumOfDigits(digit){
+    if(!isNaN(digit)) {
+       return digit % 9 === 0 ? 9 : digit % 9;
+    }
+    console.log("input is not a valid number");
+}
+
+sumOfDigits(12345714);

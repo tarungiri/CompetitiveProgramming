@@ -1,0 +1,11 @@
+// <-- Calculate Factorial without Recurssion -->
+
+function CalculateFactWithoutRecurssion(number, result = 1) {
+   while(number > 1){
+       result = result * number;
+       number--;
+   }
+   return result;
+}
+
+CalculateFactWithoutRecurssion(5);

@@ -1,0 +1,109 @@
+ function swap(arr, first, second){
+     const temp =  arr[first];
+     arr[first] = arr[second];
+     arr[second] = temp;
+ }
+
+ // Given a series of 1-N number array
+ //function sortNumberSequence(arr){
+ //    let currentIndex = 0;
+ //   while(currentIndex < arr.length){
+ //       const valueAtCurrentIndex = arr[currentIndex];
+ //       if(currentIndex === valueAtCurrentIndex-1){
+ //           currentIndex++;
+ //       } else {
+ //           swap(arr, currentIndex, valueAtCurrentIndex-1);          
+ //       }
+ //   }
+//
+ //   return arr;
+ //}
+
+// Given a series of 0-N number array
+// function findMissingNumber(arr){
+//     let currentIndex = 0;
+//    while(currentIndex < arr.length){
+//        const valueAtCurrentIndex = arr[currentIndex];
+//        if(valueAtCurrentIndex >= arr.length || currentIndex === valueAtCurrentIndex){
+//            currentIndex++;
+//        } else {
+//            swap(arr, currentIndex, valueAtCurrentIndex);          
+//        }
+//    }
+//
+//    for(let i=0; i< arr.length; i++){
+//        if(i !== arr[i]){
+//            return i;
+//        }
+//    }
+//     return nums.length;
+// }
+//
+
+//Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
+//function findAllMissingNumber(nums){
+//    let currentIndex = 0;
+//    while(currentIndex < nums.length){
+//        const valueAtCurrentIndex = nums[currentIndex];
+//        if(valueAtCurrentIndex === nums[valueAtCurrentIndex-1] || currentIndex === valueAtCurrentIndex-1){
+//            currentIndex++;
+//        } else {
+//            swap(nums, currentIndex, valueAtCurrentIndex-1);          
+//        }
+//    }
+//  const missingNumArray = [];
+//    for(let i=1; i<= nums.length; i++){
+//        if(i !== nums[i-1]){
+//            missingNumArray.push(i);
+//        }
+//    }
+//     return missingNumArray;
+//}
+//
+
+//Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
+//There is only one repeated number in nums, return this repeated number.
+//function findDuplicateNumber(nums) {
+//    let currentIndex = 0;
+//    while(currentIndex < nums.length){
+//        const valueAtCurrentIndex = nums[currentIndex];
+//        if(currentIndex === valueAtCurrentIndex-1){
+//            currentIndex++;
+//        } else if(valueAtCurrentIndex === nums[valueAtCurrentIndex-1]){
+//            return valueAtCurrentIndex;
+//        }
+//        else {
+//            swap(nums, currentIndex, valueAtCurrentIndex-1);          
+//        }
+//    }
+// 
+//};
+
+//Given an integer array nums of length n where all the integers of nums are in the range [1, n] and each integer appears once or twice,
+// return an array of all the integers that appears twice.
+function findAllDuplicates(nums) {
+    let currentIndex = 0;
+    const allDuplicates = [];
+    while(currentIndex < nums.length){
+        const valueAtCurrentIndex = nums[currentIndex];
+        if(valueAtCurrentIndex !== nums[valueAtCurrentIndex-1]){
+            swap(nums, currentIndex, valueAtCurrentIndex-1);
+        } 
+        else {
+               currentIndex++;       
+        }
+    }
+    for(let i=0; i<nums.length;i++){
+        if(nums[i] !== i+1){
+           allDuplicates.push(nums[i]);
+           }
+    }
+    return allDuplicates;
+}
+
+//
+ //console.log(sortNumberSequence([3,5,2,1,4]));
+ // console.log(findMissingNumber([3,5,1,4]));
+ //console.log(findAllMissingNumber([3,1,1,1]));
+//console.log(findDuplicateNumber([3,1,4,1]));
+console.log(findAllDuplicates([4,3,2,7,8,2,3,1]));

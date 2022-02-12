@@ -1,0 +1,62 @@
+//<--- Approach --->
+//Take two stack(here we use array in JS which implements stack itself) first and last
+
+//Enqueue ->
+    //1. push into fisrt array
+
+//Dequeue ->
+    //1. if last array is not empty then just pop from last array else
+    //2. then put all items from fisrt to last and then do pop on last array
+ 
+
+//Peek ->
+    //1. Return last item from last array if not empty else
+    //2.  put all items from fisrt to last and then return last item
+
+
+// Time complexity ->  O(1) amortised
+// Space Complexity -> O(2n)=> O(n)
+
+class MyQueue {
+    constructor(){
+        this.first = [];
+        this.last = [];
+    }
+
+    enqueue(value){
+        this.first.push(value);
+        return this;
+    }
+
+    dequeue(){
+        if(this.last.length === 0){
+            const length = this.first.length;
+            for(let i=0; i<length; i++){
+                this.last.push(this.first.pop())
+            }
+        } 
+        this.last.pop();
+        return this;
+    }
+
+    peek(){
+       if(this.last.length === 0){  
+       const length =  this.first.length;        
+            for(let i=0; i<length; i++){
+                this.last.push(this.first.pop())
+            }
+        } 
+       return this.last[this.last.length-1];
+    }
+}
+
+const myQ = new MyQueue();
+myQ.enqueue(10);
+myQ.enqueue(20);
+myQ.enqueue(30);
+myQ.dequeue();
+myQ.dequeue();
+myQ.enqueue(36);
+myQ.dequeue();
+myQ.dequeue();
+myQ.peek();

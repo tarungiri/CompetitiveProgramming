@@ -1,0 +1,12 @@
+// <-- Calculate Factorial using Recurssion -->
+
+function CalculateFactUsingRecurssion(number) {
+    if(number === 0) return 1;
+    if(number <= 2) {
+        return number;
+    }
+   
+    return number * CalculateFactUsingRecurssion(number - 1);
+}
+
+CalculateFactUsingRecurssion(4);
